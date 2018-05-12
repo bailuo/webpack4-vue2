@@ -24,7 +24,7 @@ let config = {
 
     //入口文件
     entry: {
-        main: './src/components/main.js',   //指定一个name为main的入口文件
+        main: './src/main.js',   //指定一个name为main的入口文件
     },
 
     //打包输出配置
