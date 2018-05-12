@@ -9,6 +9,8 @@ import StyleExtractPlugin from 'mini-css-extract-plugin';
 import CssMinimizerPlugin from 'optimize-css-assets-webpack-plugin';
 //导入js压缩插件
 import JsMinimizerPlugin from 'uglifyjs-webpack-plugin';
+//导入复制文件的插件
+import CopyFilePlugin from 'copy-webpack-plugin';
 
 //指定happypack插件的线程数
 const happyThreadPool = HappyPack.ThreadPool({
@@ -71,6 +73,17 @@ let config = {
             threadPool: happyThreadPool,                //线程数
             verbose: true                               //详情
         }),
+
+        //使用拷贝文件插件
+        new CopyFilePlugin([{
+            from: './src/static',   //源路径
+            to: 'static',           //目标路径，此路径为相对于dist下的路径
+            ignore: [               //要忽略的文件
+                /node_modules/,
+                /.DS_Store/,
+                'test-ignore'
+            ]
+        }]),
 
         //样式代码提取插件配置
         new StyleExtractPlugin({
