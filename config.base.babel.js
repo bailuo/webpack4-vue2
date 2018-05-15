@@ -17,6 +17,8 @@ const happyThreadPool = HappyPack.ThreadPool({
     size: 4
 });
 
+const publicPath = 'http://127.0.0.1:10080/';
+
 console.log('Mode: \x1b[32m\x1b[1m'+process.env.NODE_ENV+'\x1b[0m');
 
 //webpack配置
@@ -33,7 +35,7 @@ let config = {
     output: {
         path: Path.resolve('dist'),             //编译后文件的目录，根目录是以./开头
         filename: 'static/[name].js',           //编译后输出的js文件名，[name]表示原文件名，[hash:8]表示8个长度的随机字符串
-        publicPath: 'http://127.0.0.1:10080/'   //打包后文件引用的前缀，主要被html-webpack-plugin插件生成html文件时使用
+        publicPath: publicPath   //打包后文件引用的前缀，主要被html-webpack-plugin插件生成html文件时使用
     },
 
     //模块配置
