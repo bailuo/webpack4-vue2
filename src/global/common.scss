@@ -1,3 +1,15 @@
-p {
-    font-size: 14px;
+html, body {
+    margin: 0;
+    padding: 0;
+    /* 回弹滚动 */
+    -webkit-overflow-scrolling: touch;
+    /* 防止点击延迟 */
+    touch-action: manipulation;
+    /* 防止点击时闪烁 */
+    -webkit-tap-highlight-color: rgba(255, 255, 255, 0);
+}
+
+/* 去掉链接虚线 */
+a, input {
+    outline: none;
 }
