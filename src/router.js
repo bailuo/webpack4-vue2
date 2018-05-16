@@ -1,14 +1,11 @@
 import HookAuth from './hook/auth.js';
 
+import Main from './components/main.vue';
+
 import Index from './components/index.vue';
 import About from './components/about.vue';
 import Login from './components/login.vue';
 import NotFound from './components/404.vue';
-
-//子路由的组件
-const children = {
-    template: '<router-view></router-view></template>'
-};
 
 const routers = [
     //不需要验证token的路由
@@ -21,17 +18,19 @@ const routers = [
     {
         //根目录
         path: '/',
-        component: children,
-        beforeEnter: HookAuth,
+        component: Index,
+        // beforeEnter: HookAuth,
+        meta: { title: '管理首页', index: 2 },
         children: [
-            //首页
-            { path: '/', component: Index, meta: { title: '首页', index: 2 } },
+            //管理首页
+            { path: '/', component: Main, meta: { title: '管理首页', index: 3 } },
             //关于页面
-            { path: 'about', component: About, meta: { title: '关于', index: 3 } }
+            { path: 'about', component: About, meta: { title: '关于', index: 4 } }
         ]
     },
 
     //404页面
     { path: '*', component: NotFound, meta: { title: '404', index: 4 } }
 ];
+
 export default routers;
