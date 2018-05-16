@@ -13,3 +13,51 @@ html, body {
 a, input {
     outline: none;
 }
+
+h1 {
+    margin: 0;
+}
+
+/* 滑动过程中的样式 */
+.left-enter-active, .left-leave-active, .right-enter-active, .right-leave-active {
+    position: absolute;
+    top: 0;
+    width: 100%;
+    will-change: transform;
+    transition: all .5s;
+}
+/* 从左边滑入前的样式 */
+.left-enter {
+    transform: translateX(-100%);
+}
+/* 从左边滑入后的样式 */
+.left-enter-to {
+    transform: translateX(0);
+    position: relative;
+}
+/* 从左边滑入的组件在离开前的样式 */
+.left-leave {
+    transform: translateX(0);
+}
+/* 从左边滑入的组件在离开后的样式 */
+.left-leave-to {
+    transform: translateX(100%);
+}
+
+/* 从右边滑入前的样式 */
+.right-enter {
+    transform: translateX(100%);
+}
+/* 从右边滑入后的样式 */
+.right-enter-to {
+    transform: translateX(0);
+    position: relative;
+}
+/* 从右边滑入的组件在离开前的样式 */
+.right-leave {
+    transform: translateX(0);
+}
+/* 从右边滑入的组件在离开后的样式 */
+.right-leave-to {
+    transform: translateX(-100%);
+}

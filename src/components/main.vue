@@ -1,9 +1,9 @@
 <template>
-    <div id="root">
+    <div id="body">
         <h1>{{msg}}</h1>
-        <p>这是404页面</p>
+        <p>这是index组件</p>
         <div>
-            <router-link to="/">首页</router-link>
+            <router-link to="/about">关于</router-link>
         </div>
     </div>
 </template>
@@ -12,7 +12,7 @@
 export default {
     data() {
         return {
-            msg: '[404]Not found'
+            msg: '首页'
         };
     }
 };
