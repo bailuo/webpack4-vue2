@@ -3,4 +3,6 @@
 
 各包的版本请自行查阅`package.json`文件
 
+`api.json`文件是[`Mock Api Server`](https://github.com/dxvgef/mock-api-server)的配置文件，用于模拟后端提供JSON数据。
+
 **注意：本示例使用ES6语法写webpack的配置文件，`webpack.config.js`必须写成`webpack.config.babel.js`，所有webpack配置文件名中的`.babel.js`不能改动。**

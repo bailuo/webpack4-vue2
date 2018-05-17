@@ -1,7 +1,6 @@
 import HookAuth from './hook/auth.js';
 
 import Main from './components/main.vue';
-
 import Index from './components/index.vue';
 import About from './components/about.vue';
 import Login from './components/login.vue';
@@ -19,7 +18,7 @@ const routers = [
         //根目录
         path: '/',
         component: Index,
-        // beforeEnter: HookAuth,
+        beforeEnter: HookAuth,
         meta: { title: '管理首页', index: 2 },
         children: [
             //管理首页

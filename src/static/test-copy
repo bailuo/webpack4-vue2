@@ -1,2 +1,0 @@
-这个文件用于测试copy-webpack-plugin插件是否能正常工作
-打包后，本文件应该被复制到/dist/static/目录

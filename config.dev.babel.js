@@ -3,6 +3,7 @@ import Path from 'path';
 import Webpack from 'webpack';
 //导入html打包插件
 import HtmlPlugin from 'html-webpack-plugin';
+import CopyFilePlugin from 'copy-webpack-plugin';
 
 //webpack配置
 let config = {
@@ -22,7 +23,7 @@ let config = {
 
         //以下两个都用于dev-server热模块更新的插件
         new Webpack.NamedModulesPlugin(),
-        new Webpack.HotModuleReplacementPlugin(),
+        new Webpack.HotModuleReplacementPlugin()
     ],
 
     //开发服务配置
