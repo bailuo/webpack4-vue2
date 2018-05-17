@@ -1,0 +1,15 @@
+{
+    "listen": "0.0.0.0:3000",
+    "routers": [
+        {
+            "desc": "身份验证",
+            "path": "/auth",
+            "method": "post",
+            "status": 200,
+            "data": {
+                "error": "",
+                "token": "123456"
+            }
+        }
+    ]
+}
