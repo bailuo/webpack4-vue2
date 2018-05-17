@@ -7,6 +7,9 @@ import prod from './config.prod.babel.js';
 //导入配置文件合并插件
 import merge from 'webpack-merge';
 
+//打印mode参数值
+console.log('Mode: \x1b[32m\x1b[1m'+process.env.NODE_ENV+'\x1b[0m');
+
 //定义最终配置变量
 let finalConfig;
 
