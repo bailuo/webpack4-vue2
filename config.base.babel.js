@@ -33,15 +33,24 @@ export default {
         rules: [
             {
                 test: /\.js$/, //规则匹配的文件后缀名
-                use: 'happypack/loader?id=babel', //使用happypack插件打包
-                include: Path.resolve('src'), //指定要打包的文件路径
-                exclude: /node_modules/ //用正则指定要排除的路径
+                use: 'happypack/loader?id=babel' //使用happypack插件打包
             },
             {
                 test: /\.vue$/,
                 use: 'vue-loader',
                 include: Path.resolve('src'),
                 exclude: /node_modules/
+            },
+            {
+                test: /\.(jpg|gif|png|eot|woff|woff2|svg|ttf)([\?]?.*)$/,
+                use: [
+                    {
+                        loader: 'file-loader',
+                        options: {
+                            name: '[path][name].[ext]'
+                        }
+                    }
+                ]
             }
         ]
     },
