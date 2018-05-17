@@ -9,7 +9,8 @@ import NotFound from './components/404.vue';
 const routers = [
     //不需要验证token的路由
     {
-        path: '/login', component: Login,
+        path: '/login',
+        component: Login,
         meta: { title: '登录', index: 1 }
     },
 
@@ -22,9 +23,17 @@ const routers = [
         meta: { title: '管理首页', index: 2 },
         children: [
             //管理首页
-            { path: '/', component: Main, meta: { title: '管理首页', index: 3 } },
+            {
+                path: '/',
+                component: Main,
+                meta: { title: '管理首页', index: 3 }
+            },
             //关于页面
-            { path: 'about', component: About, meta: { title: '关于', index: 4 } }
+            {
+                path: 'about',
+                component: About,
+                meta: { title: '关于', index: 4 }
+            }
         ]
     },
 

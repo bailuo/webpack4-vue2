@@ -5,10 +5,10 @@ import Webpack from 'webpack';
 import HtmlPlugin from 'html-webpack-plugin';
 
 //webpack配置
-let config = {
+export default {
     //打包输出配置
     output: {
-        publicPath: '/'   //打包后文件引用的前缀，主要被html-webpack-plugin插件生成html文件时使用
+        publicPath: '/' //打包后文件引用的前缀，主要被html-webpack-plugin插件生成html文件时使用
     },
     //模块配置
     module: {
@@ -49,6 +49,3 @@ let config = {
         quiet: false //不显示打包的信息
     }
 };
-
-//导出配置
-export default config;

@@ -1,6 +1,6 @@
 // Base64编码
 export const Base64Encode = function(value) {
-    return Buffer.from(value).toString('base64')
+    return Buffer.from(value).toString('base64');
 };
 
 // Base64解码

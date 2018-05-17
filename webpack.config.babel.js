@@ -8,14 +8,14 @@ import prod from './config.prod.babel.js';
 import merge from 'webpack-merge';
 
 //打印mode参数值
-console.log('Mode: \x1b[32m\x1b[1m'+process.env.NODE_ENV+'\x1b[0m');
+console.log('Mode: \x1b[32m\x1b[1m' + process.env.NODE_ENV + '\x1b[0m');
 
 //定义最终配置变量
 let finalConfig;
 
 //判断命令行中传入的mode参数值
 if (process.env.NODE_ENV === 'production') {
-    finalConfig = merge(base, prod) //合并生产环境配置
+    finalConfig = merge(base, prod); //合并生产环境配置
 } else {
     finalConfig = merge(base, dev); //合并开发环境配置
 }

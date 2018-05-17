@@ -10,12 +10,12 @@ Vue.use(VueRouter);
 
 //按自定义配置实例化vue-router
 const vueRouter = new VueRouter({
-    mode: 'history',    //路由模式
-    routes: Routers     //路由规则
+    mode: 'history', //路由模式
+    routes: Routers //路由规则
 });
 
 //按自定义配置实例化vue
 new Vue({
-    router: vueRouter,   //定义路由
+    router: vueRouter, //定义路由
     render: h => h(Main) //渲染入口组件
-}).$mount('#vue-app');  //载入指定的根节点
+}).$mount('#vue-app'); //载入指定的根节点

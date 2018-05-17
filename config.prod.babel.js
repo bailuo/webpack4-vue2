@@ -7,10 +7,10 @@ import JsMinimizerPlugin from 'uglifyjs-webpack-plugin';
 import StyleExtractPlugin from 'mini-css-extract-plugin';
 
 //webpack配置
-let config = {
+export default {
     //打包输出配置
     output: {
-        publicPath: 'http://127.0.0.1:10080/'   //打包后文件引用的前缀，主要被html-webpack-plugin插件生成html文件时使用
+        publicPath: 'http://127.0.0.1:10080/' //打包后文件引用的前缀，主要被html-webpack-plugin插件生成html文件时使用
     },
     //模块配置
     module: {
@@ -19,7 +19,11 @@ let config = {
             {
                 test: /\.(sass|scss|css)$/,
                 // 生产环境抽取style到css文件，因此用css-loader解析
-                use: [StyleExtractPlugin.loader, 'css-loader', 'postcss-loader'],
+                use: [
+                    StyleExtractPlugin.loader,
+                    'css-loader',
+                    'postcss-loader'
+                ],
                 include: Path.resolve('src'),
                 exclude: /node_modules/
             }
@@ -29,11 +33,11 @@ let config = {
     optimization: {
         //提取公共代码与第三方代码，将多个入口重复加载的公共资源提取出来
         splitChunks: {
-            chunks: "initial",                  //必须三选一： "initial" | "all"(默认就是all) | "async"
-            minSize: 0,                         //最小尺寸，默认0
-            minChunks: 1,                       //最小 chunk ，默认1
-            maxAsyncRequests: 1,                //最大异步请求数， 默认1
-            maxInitialRequests: 1,              //最大初始化请求书，默认1
+            chunks: 'initial', //必须三选一： "initial" | "all"(默认就是all) | "async"
+            minSize: 0, //最小尺寸，默认0
+            minChunks: 1, //最小 chunk ，默认1
+            maxAsyncRequests: 1, //最大异步请求数， 默认1
+            maxInitialRequests: 1 //最大初始化请求书，默认1
             // name: () => {},                     //名称，此选项可接收function
             //这里开始设置缓存的 chunks
             // cacheGroups: {
@@ -80,7 +84,8 @@ let config = {
             filename: 'index.html', //指定打包后的文件名，输出路径从output.path读取
             chunks: 'main', //指定js入口文件的name，对应entry属性里的设置
             hash: false, //启用hash字符串
-            minify: {   //压缩HTML文件
+            minify: {
+                //压缩HTML文件
                 removeComments: true, //移除HTML中的注释
                 collapseWhitespace: true //删除空白符与换行符
             }
@@ -88,7 +93,7 @@ let config = {
 
         //样式代码提取插件配置
         new StyleExtractPlugin({
-            filename: 'static/[name].css'   //提取出来的样式保存文件
+            filename: 'static/[name].css' //提取出来的样式保存文件
         }),
 
         //Scope Hoisting作用域提升插件，使打包的文件更小
@@ -106,12 +111,6 @@ let config = {
 
         //指定node_modules所在位置，当import第三方模块时，直接从以下指定的路径里查找
         //注意，指定路径后，dev-server会无法启动，只能在打包时启用
-        modules: [
-            Path.resolve('src'),
-            Path.resolve('node_modules')
-        ]
+        modules: [Path.resolve('src'), Path.resolve('node_modules')]
     }
 };
-
-//导出配置
-export default config;

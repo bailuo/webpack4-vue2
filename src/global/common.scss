@@ -1,4 +1,5 @@
-html, body {
+html,
+body {
     margin: 0;
     padding: 0;
     /* 回弹滚动 */
@@ -10,7 +11,8 @@ html, body {
 }
 
 /* 去掉链接虚线 */
-a, input {
+a,
+input {
     outline: none;
 }
 
@@ -19,12 +21,15 @@ h1 {
 }
 
 /* 滑动过程中的样式 */
-.left-enter-active, .left-leave-active, .right-enter-active, .right-leave-active {
+.left-enter-active,
+.left-leave-active,
+.right-enter-active,
+.right-leave-active {
     position: absolute;
     top: 0;
     width: 100%;
     will-change: transform;
-    transition: all .5s;
+    transition: all 0.5s;
 }
 /* 从左边滑入前的样式 */
 .left-enter {
