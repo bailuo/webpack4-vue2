@@ -15,11 +15,17 @@ export default {
         //规则
         rules: [
             {
-                test: /\.(sass|scss|css)$/,
-                // 开发环境不抽取style到css文件，因此直接用style-loader解析
-                use: ['style-loader', 'postcss-loader'],
-                include: Path.resolve('src'),
-                exclude: /node_modules/
+                test: /\.(sass|scss)$/,
+                use: [
+                    'sass-loader',
+                    'style-loader',
+                    'css-loader',
+                    'postcss-loader'
+                ]
+            },
+            {
+                test: /\.css$/, //规则匹配的文件后缀名
+                use: ['style-loader', 'css-loader', 'postcss-loader']
             }
         ]
     },

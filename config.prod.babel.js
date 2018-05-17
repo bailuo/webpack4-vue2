@@ -17,15 +17,22 @@ export default {
         //规则
         rules: [
             {
-                test: /\.(sass|scss|css)$/,
-                // 生产环境抽取style到css文件，因此用css-loader解析
+                test: /\.(sass|scss)$/,
                 use: [
                     StyleExtractPlugin.loader,
+                    'style-loader',
                     'css-loader',
                     'postcss-loader'
-                ],
-                include: Path.resolve('src'),
-                exclude: /node_modules/
+                ]
+            },
+            {
+                test: /\.css$/,
+                use: [
+                    StyleExtractPlugin.loader,
+                    'style-loader',
+                    'css-loader',
+                    'postcss-loader'
+                ]
             }
         ]
     },
