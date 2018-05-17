@@ -3,9 +3,23 @@ import Path from 'path';
 import Webpack from 'webpack';
 //导入html打包插件
 import HtmlPlugin from 'html-webpack-plugin';
+import StyleExtractPlugin from 'mini-css-extract-plugin';
 
 //webpack配置
 let config = {
+    //模块配置
+    module: {
+        //规则
+        rules: [
+            {
+                test: /\.(sass|scss|css)$/,
+                // 开发环境不抽取style到css文件，因此直接用style-loader解析
+                use: ['style-loader', 'postcss-loader'],
+                include: Path.resolve('src'),
+                exclude: /node_modules/
+            }
+        ]
+    },
     //插件配置
     plugins: [
         //使用html打包插件（自动插入script标签并在src中填写入口js文件的路径）

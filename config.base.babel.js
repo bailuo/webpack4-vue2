@@ -3,8 +3,6 @@ import Path from 'path';
 import HappyPack from 'happypack';
 //导入vue-loader插件
 import VueLoaderPlugin from 'vue-loader/lib/plugin';
-//导入style提取至css文件的插件
-import StyleExtractPlugin from 'mini-css-extract-plugin';
 //导入复制文件的插件
 import CopyFilePlugin from 'copy-webpack-plugin';
 
@@ -47,12 +45,6 @@ let config = {
                 use: 'vue-loader',
                 include: Path.resolve('src'),
                 exclude: /node_modules/
-            },
-            {
-                test: /\.(sass|scss|css)$/,
-                use: [StyleExtractPlugin.loader, 'css-loader', 'postcss-loader'],
-                include: Path.resolve('src'),
-                exclude: /node_modules/
             }
         ]
     },
@@ -76,15 +68,9 @@ let config = {
             to: 'static',           //目标路径，此路径为相对于dist下的路径
             ignore: [               //要忽略的文件
                 /node_modules/,
-                /.DS_Store/,
-                'test-ignore'
+                /.DS_Store/
             ]
-        }]),
-
-        //样式代码提取插件配置
-        new StyleExtractPlugin({
-            filename: 'static/[name].css'   //提取出来的样式保存文件
-        })
+        }])
     ],
 
     //解析配置

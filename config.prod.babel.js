@@ -1,15 +1,26 @@
 import Path from 'path';
-//导入webpack模块
 import Webpack from 'webpack';
-//导入打包前自动删除dist目录的插件
 import cleanWebpackPlugin from 'clean-webpack-plugin';
-//导入html打包插件
 import HtmlPlugin from 'html-webpack-plugin';
 import CssMinimizerPlugin from 'optimize-css-assets-webpack-plugin';
 import JsMinimizerPlugin from 'uglifyjs-webpack-plugin';
+import StyleExtractPlugin from 'mini-css-extract-plugin';
 
 //webpack配置
 let config = {
+    //模块配置
+    module: {
+        //规则
+        rules: [
+            {
+                test: /\.(sass|scss|css)$/,
+                // 生产环境抽取style到css文件，因此用css-loader解析
+                use: [StyleExtractPlugin.loader, 'css-loader', 'postcss-loader'],
+                include: Path.resolve('src'),
+                exclude: /node_modules/
+            }
+        ]
+    },
     //优化配置
     optimization: {
         //提取公共代码与第三方代码，将多个入口重复加载的公共资源提取出来
@@ -69,6 +80,11 @@ let config = {
                 removeComments: true, //移除HTML中的注释
                 collapseWhitespace: true //删除空白符与换行符
             }
+        }),
+
+        //样式代码提取插件配置
+        new StyleExtractPlugin({
+            filename: 'static/[name].css'   //提取出来的样式保存文件
         }),
 
         //Scope Hoisting作用域提升插件，使打包的文件更小
