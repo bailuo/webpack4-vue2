@@ -11,10 +11,8 @@ const happyThreadPool = HappyPack.ThreadPool({
     size: 4
 });
 
-const publicPath = 'http://127.0.0.1:10080/';
-
 //webpack配置
-let config = {
+export default {
     //打包时遇到错误时不继续
     bail: true,
 
@@ -26,8 +24,7 @@ let config = {
     //打包输出配置
     output: {
         path: Path.resolve('dist'),             //编译后文件的目录，根目录是以./开头
-        filename: 'static/[name].js',           //编译后输出的js文件名，[name]表示原文件名，[hash:8]表示8个长度的随机字符串
-        publicPath: publicPath   //打包后文件引用的前缀，主要被html-webpack-plugin插件生成html文件时使用
+        filename: 'static/[name].js'           //编译后输出的js文件名，[name]表示原文件名，[hash:8]表示8个长度的随机字符串
     },
 
     //模块配置
@@ -84,6 +81,3 @@ let config = {
         // noParse: /jquery|lodash/
     }
 };
-
-//导出配置
-export default config;

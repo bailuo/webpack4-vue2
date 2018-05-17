@@ -3,10 +3,13 @@ import Path from 'path';
 import Webpack from 'webpack';
 //导入html打包插件
 import HtmlPlugin from 'html-webpack-plugin';
-import StyleExtractPlugin from 'mini-css-extract-plugin';
 
 //webpack配置
 let config = {
+    //打包输出配置
+    output: {
+        publicPath: '/'   //打包后文件引用的前缀，主要被html-webpack-plugin插件生成html文件时使用
+    },
     //模块配置
     module: {
         //规则

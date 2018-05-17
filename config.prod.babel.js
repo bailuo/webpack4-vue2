@@ -8,6 +8,10 @@ import StyleExtractPlugin from 'mini-css-extract-plugin';
 
 //webpack配置
 let config = {
+    //打包输出配置
+    output: {
+        publicPath: 'http://127.0.0.1:10080/'   //打包后文件引用的前缀，主要被html-webpack-plugin插件生成html文件时使用
+    },
     //模块配置
     module: {
         //规则
