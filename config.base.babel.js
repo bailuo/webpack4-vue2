@@ -87,9 +87,13 @@ export default {
 
     //解析配置
     resolve: {
-        //别名
-        alias: {
-            vue$: 'vue/dist/vue.esm.js' //使用esm版的vue.js
-        }
+        // //别名
+        // alias: {
+        //     vue$: 'vue/dist/vue.esm.js' //使用esm版的vue.js
+        // }
+    },
+    externals: {
+        vue: 'Vue',
+        'vue-router': 'VueRouter'
     }
 };
