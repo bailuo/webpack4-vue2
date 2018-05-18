@@ -2,9 +2,9 @@
     "name": "webpack4-vue2",
     "version": "1.0.0",
     "scripts": {
-        "start": "cross-env NODE_ENV=development webpack-dev-server --mode development",
-        "dev": "cross-env NODE_ENV=development webpack --mode development",
-        "build": "cross-env NODE_ENV=production webpack --mode production"
+        "start": "cross-env NODE_ENV=development webpack-dev-server",
+        "dev": "cross-env NODE_ENV=development webpack",
+        "prod": "cross-env NODE_ENV=production webpack"
     },
     "devDependencies": {
         "axios": "^0.18.0",
@@ -12,7 +12,6 @@
         "babel-loader": "^7.1.4",
         "babel-plugin-transform-runtime": "^6.23.0",
         "babel-preset-env": "^1.6.1",
-        "clean-webpack-plugin": "^0.1.19",
         "copy-webpack-plugin": "^4.5.1",
         "cross-env": "^5.1.5",
         "css-loader": "^0.28.11",

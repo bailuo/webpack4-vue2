@@ -8,11 +8,13 @@ import CopyFilePlugin from 'copy-webpack-plugin';
 
 //指定happypack插件的线程数
 const happyThreadPool = HappyPack.ThreadPool({
-    size: 4
+    size: 2
 });
 
 //webpack配置
 export default {
+    mode: process.env.NODE_ENV,
+
     //打包时遇到错误时不继续
     bail: true,
 
@@ -47,6 +49,7 @@ export default {
                     {
                         loader: 'file-loader',
                         options: {
+                            outputPath: 'static',
                             name: '[path][name].[ext]'
                         }
                     }
@@ -88,8 +91,5 @@ export default {
         alias: {
             vue$: 'vue/dist/vue.esm.js' //使用esm版的vue.js
         }
-
-        //忽略没有采用模块化的文件
-        // noParse: /jquery|lodash/
     }
 };

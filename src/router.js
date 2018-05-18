@@ -1,10 +1,10 @@
 import HookAuth from './hook/auth.js';
 
-import Main from './components/main.vue';
-import Index from './components/index.vue';
-import About from './components/about.vue';
-import Login from './components/login.vue';
-import NotFound from './components/404.vue';
+import Main from './page/main.vue';
+import Index from './page/index.vue';
+import About from './page/about.vue';
+import Login from './page/login.vue';
+import NotFound from './page/404.vue';
 
 const routers = [
     //不需要验证token的路由

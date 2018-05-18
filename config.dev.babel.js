@@ -18,8 +18,8 @@ export default {
                 test: /\.(sass|scss)$/,
                 use: [
                     'sass-loader',
-                    'style-loader',
                     'css-loader',
+                    'style-loader',
                     'postcss-loader'
                 ]
             },

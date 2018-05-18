@@ -7,7 +7,7 @@
                 <p>账号：<input v-model="username" type="text" autocomplete="username" placeholder="请输入账号"></p>
                 <p>账号：<input v-model="password" type="password" autocomplete="password" placeholder="请输入密码"></p>
                 <p>
-                    <el-button type="primary">主要按钮</el-button>
+                    <el-button native-type="submit" type="primary">主要按钮</el-button>
                 </p>
             </form>
         </div>

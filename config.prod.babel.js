@@ -1,6 +1,5 @@
 import Path from 'path';
 import Webpack from 'webpack';
-import cleanWebpackPlugin from 'clean-webpack-plugin';
 import HtmlPlugin from 'html-webpack-plugin';
 import CssMinimizerPlugin from 'optimize-css-assets-webpack-plugin';
 import JsMinimizerPlugin from 'uglifyjs-webpack-plugin';
@@ -18,59 +17,16 @@ export default {
         rules: [
             {
                 test: /\.(sass|scss)$/,
-                use: [
-                    StyleExtractPlugin.loader,
-                    'style-loader',
-                    'css-loader',
-                    'postcss-loader'
-                ]
+                use: [StyleExtractPlugin.loader, 'css-loader', 'postcss-loader']
             },
             {
                 test: /\.css$/,
-                use: [
-                    StyleExtractPlugin.loader,
-                    'style-loader',
-                    'css-loader',
-                    'postcss-loader'
-                ]
+                use: [StyleExtractPlugin.loader, 'css-loader', 'postcss-loader']
             }
         ]
     },
     //优化配置
     optimization: {
-        //提取公共代码与第三方代码，将多个入口重复加载的公共资源提取出来
-        splitChunks: {
-            chunks: 'initial', //必须三选一： "initial" | "all"(默认就是all) | "async"
-            minSize: 0, //最小尺寸，默认0
-            minChunks: 1, //最小 chunk ，默认1
-            maxAsyncRequests: 1, //最大异步请求数， 默认1
-            maxInitialRequests: 1 //最大初始化请求书，默认1
-            // name: () => {},                     //名称，此选项可接收function
-            //这里开始设置缓存的 chunks
-            // cacheGroups: {
-            //     priority: "0",                  //缓存组优先级 false | object |
-            //     vendor: {                       //key 为entry中定义的 入口名称
-            //         chunks: "initial",          //必须三选一： "initial" | "all" | "async"(默认就是异步)
-            //         // test: /jquery|lodash/,   //正则规则验证，如果符合就提取 chunk
-            //         name: "vendor",             //要缓存的 分隔出来的 chunk 名称
-            //         minSize: 0,
-            //         minChunks: 1,
-            //         enforce: true,
-            //         maxAsyncRequests: 1,        //最大异步请求数， 默认1
-            //         maxInitialRequests: 1,      //最大初始化请求书，默认1
-            //         reuseExistingChunk: true    //可设置是否重用该chunk（查看源码没有发现默认值）
-            //     }
-            // }
-        },
-        //分割webpack的运行时代码块
-        runtimeChunk: {
-            name: 'webpack' //webpack运行时文件名
-        },
-        /*
-        代码最小化
-        注意，如果配置了此项，即便webpack的mode值为production，也不会启用自带的压缩功能
-        因此，这里要把js和css的压缩插件都配置进来
-        */
         minimizer: [
             //启用js压缩插件
             new JsMinimizerPlugin({
@@ -79,7 +35,9 @@ export default {
                 sourceMap: true
             }),
             //启用css压缩插件
-            new CssMinimizerPlugin()
+            new CssMinimizerPlugin({
+                chunkFilename: '[id].css'
+            })
         ]
     },
 
@@ -93,6 +51,8 @@ export default {
             hash: false, //启用hash字符串
             minify: {
                 //压缩HTML文件
+                html5: true, //html5文件类型
+                minifyCSS: true, //压缩css
                 removeComments: true, //移除HTML中的注释
                 collapseWhitespace: true //删除空白符与换行符
             }
@@ -104,10 +64,7 @@ export default {
         }),
 
         //Scope Hoisting作用域提升插件，使打包的文件更小
-        new Webpack.optimize.ModuleConcatenationPlugin(),
-
-        //使用webpack清理插件
-        new cleanWebpackPlugin(['dist'])
+        new Webpack.optimize.ModuleConcatenationPlugin()
     ],
 
     //解析配置
