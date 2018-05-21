@@ -13,6 +13,7 @@ const happyThreadPool = HappyPack.ThreadPool({
 
 //webpack配置
 export default {
+    //定义打包模式
     mode: process.env.NODE_ENV,
 
     //打包时遇到错误时不继续
@@ -39,9 +40,7 @@ export default {
             },
             {
                 test: /\.vue$/,
-                use: 'vue-loader',
-                include: Path.resolve('src'),
-                exclude: /node_modules/
+                use: 'vue-loader'
             },
             {
                 test: /\.(jpg|gif|png|eot|woff|woff2|svg|ttf)([\?]?.*)$/,
@@ -86,12 +85,15 @@ export default {
     ],
 
     //解析配置
-    resolve: {
-        // //别名
-        // alias: {
-        //     vue$: 'vue/dist/vue.esm.js' //使用esm版的vue.js
-        // }
-    },
+    // resolve: {
+    // //别名
+    // alias: {
+    //     //指定使用vue的版本
+    //     vue$: 'vue/dist/vue.esm.js' //使用esm版的vue.js
+    // }
+    // },
+
+    //外部扩展
     externals: {
         vue: 'Vue',
         'vue-router': 'VueRouter'

@@ -48,7 +48,7 @@ export default {
             template: './src/index.html', //指定要打包的html文件
             filename: 'index.html', //指定打包后的文件名，输出路径从output.path读取
             chunks: 'main', //指定js入口文件的name，对应entry属性里的设置
-            hash: false, //启用hash字符串
+            hash: true, //启用hash字符串来控制缓存更新
             minify: {
                 //压缩HTML文件
                 html5: true, //html5文件类型
