@@ -17,11 +17,21 @@ export default {
         rules: [
             {
                 test: /\.(sass|scss)$/,
-                use: [StyleExtractPlugin.loader, 'css-loader', 'postcss-loader']
+                use: [
+                    StyleExtractPlugin.loader,
+                    'style-loader',
+                    'css-loader',
+                    'postcss-loader'
+                ]
             },
             {
                 test: /\.css$/,
-                use: [StyleExtractPlugin.loader, 'css-loader', 'postcss-loader']
+                use: [
+                    StyleExtractPlugin.loader,
+                    'style-loader',
+                    'css-loader',
+                    'postcss-loader'
+                ]
             }
         ]
     },

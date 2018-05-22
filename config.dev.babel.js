@@ -18,14 +18,14 @@ export default {
                 test: /\.(sass|scss)$/,
                 use: [
                     'sass-loader',
-                    // 'css-loader',
                     'style-loader',
+                    'css-loader',
                     'postcss-loader'
                 ]
             },
             {
                 test: /\.css$/, //规则匹配的文件后缀名
-                use: ['style-loader', 'postcss-loader']
+                use: ['style-loader', 'css-loader', 'postcss-loader']
             }
         ]
     },
